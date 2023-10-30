@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Step from "./Step";
 
-function App() {
+export default function App() {
+  let childData = 1;
+
+  const getData = (cData) => {
+    childData = cData + 1;
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Step displayTag={"Step"} stepCount={1} passUp={getData} />;
+      <Step displayTag={"Count"} stepCount={childData} passUp={getData} />;
+    </>
   );
 }
-
-export default App;
